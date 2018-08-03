@@ -1,0 +1,13 @@
+name: aptman/
+version: 0.1.0
+
+authors:
+  - Jason Howell <jasonrobot64@gmail.com>
+
+targets:
+  aptman/:
+    main: src/aptman/.cr
+
+crystal: 0.25.1
+
+license: MIT
