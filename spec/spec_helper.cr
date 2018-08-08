@@ -1,2 +1,2 @@
 require "spec"
-require "../src/aptman/"
+require "../src/aptman/*"

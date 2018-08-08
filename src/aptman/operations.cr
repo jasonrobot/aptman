@@ -5,7 +5,6 @@ class Operations
   getter? install,
           update,
           upgrade,
-          remove,
-          
-  
+          remove
+
 end
