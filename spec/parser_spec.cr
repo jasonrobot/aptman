@@ -21,10 +21,11 @@ describe "Parser" do
       parser = Parser.new args
 
       mode = parser.get_mode
-      if mode.nil?
-        fail "mode was nil when parsing #{args}"
-      else
+
+      unless mode.nil?
         mode.name.should eq 'S'
+      else
+        fail "mode was nil when parsing #{args}"
       end
     end
   end
