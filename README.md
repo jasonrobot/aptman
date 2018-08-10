@@ -1,18 +1,18 @@
-# aptman/
+# aptman
 
-TODO: Write a description here
+A wrapper for apt/dpkg that acts like pacman
 
 ## Installation
 
-TODO: Write installation instructions here
+TODO: Coming soon, once it's finished.
 
 ## Usage
 
-TODO: Write usage instructions here
+see `man pacman` on arch linux. If you're not on arch, just google it.
 
 ## Development
 
-TODO: Write development instructions here
+Its WIP!
 
 ## Contributing
 
@@ -24,4 +24,4 @@ TODO: Write development instructions here
 
 ## Contributors
 
-- [your-github-user](https://github.com/your-github-user) Jason Howell - creator, maintainer
+- [jasonrobot](https://github.com/jasonrobot) Jason Howell - creator, maintainer
