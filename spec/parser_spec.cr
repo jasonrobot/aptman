@@ -29,4 +29,19 @@ describe "Parser" do
       end
     end
   end
+
+  describe "#get_non_mode_args" do
+
+  end
+
+  describe "#get_operations" do
+
+  end
+
+  describe "#get_targets" do
+    it "should not return args with a leading dash" do
+      parser = Parser.new %w(-a -b c d)
+      parser.get_targets.should eq %w(c d)
+    end
+  end
 end

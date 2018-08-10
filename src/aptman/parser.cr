@@ -2,6 +2,9 @@
 
 class Operation
 
+  def initialize(@name : String, @description : String)
+  end
+
 end
 
 class Mode
@@ -15,18 +18,39 @@ end
 
 class Parser
 
+  @dash_args : Array(String)
+
   def initialize(@args : Array(String))
     @dash_args = @args.select { |arg| arg.starts_with? '-' }
+
+    sync_ops = [
+      Operation.new("s", "search"),
+      Operation.new("y", "update"),
+      Operation.new("yy", "force update"),
+      Operation.new("u", "upgrade")
+    ]
+
+    remove_ops = [
+      Operation.new("s", "and remove deps")
+    ]
+
+    query_ops = [
+      Operation.new("l", "list files"),
+      Operation.new("o", "owns <file>")
+    ]
+
+    @@modes << Mode.new('S', "Sync", sync_ops)
+
+    @@modes << Mode.new('R', "Remove", remove_ops)
+
+    @@modes << Mode.new('Q', "Query", query_ops)
+
   end
 
-  @@modes : Array(Mode) = [
-    Mode.new('S', "Sync"),
-    Mode.new('R', "Remove"),
-    Mode.new('Q', "Query"),
-  ]
+  @@modes : Array(Mode) = Array(Mode).new
 
   # Get the major mode for the command. These correspond to a Mode object.
-  def get_mode() : Mode?
+  def get_mode : Mode?
     # see if any args indicate a mode
     @@modes.find do |mode|
       # get the first char of each arg that starts with dash
@@ -48,7 +72,12 @@ class Parser
     end
   end
 
-  def get_arguments()
+  def get_arguments
+  end
+
+  # Get the target names/patterns/files for the command
+  def get_targets
+    @args.select { |arg| !arg.starts_with? '-' }
   end
 
 end

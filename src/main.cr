@@ -2,8 +2,6 @@
 
 require "option_parser"
 
-
-
 class PacmanParser
 
   getter? sync : Bool = false,
@@ -37,7 +35,8 @@ use 'aptman {-h --help}' with an operation for available options"
         # process = Process.new "apt-get",
         #                       ["install"]
         # process.wait
-        puts "apt-get install #{}"
+        package = "foo"
+        puts "apt-get install #{package}"
       end
 
       parser.on("-Ss", "search for packages") do
@@ -83,6 +82,3 @@ end
 
 # parser = PacmanParser.new ARGV
 puts typeof(ARGV)
-
-puts parser.sync?
-puts parser.search?
