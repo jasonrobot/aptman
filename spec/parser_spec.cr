@@ -30,12 +30,9 @@ describe "Parser" do
     end
   end
 
-  describe "#get_non_mode_args" do
-
-  end
-
-  describe "#get_operations" do
-
+  describe "#get_arguments" do
+    parser = Parser.new %w(-a --arg-b -c -D)
+    parser.get_arguments.should eq %w(a arg-b c D)
   end
 
   describe "#get_targets" do
