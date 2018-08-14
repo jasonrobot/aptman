@@ -1,21 +1,5 @@
 # My very own options parser to emulate pacman
 
-class Operation
-
-  def initialize(@name : String, @description : String)
-  end
-
-end
-
-class Mode
-  property name : Char,
-           description : String,
-           operations : Array(Operation)
-
-  def initialize(@name, @description, @operations)
-  end
-end
-
 class Parser
 
   @dash_args : Array(String)
