@@ -1,5 +1,10 @@
 # My very own options parser to emulate pacman
 
+require "./operation.cr"
+require "./argument.cr"
+
+# Parser for command line args to aptman
+# This is mean to emulate how pacman works on Arch Linux
 class Parser
 
   @dash_args : Array(String)
@@ -23,37 +28,17 @@ class Parser
       Operation.new("o", "owns <file>")
     ]
 
-    @@modes << Mode.new('S', "Sync", sync_ops)
-
-    @@modes << Mode.new('R', "Remove", remove_ops)
-
-    @@modes << Mode.new('Q', "Query", query_ops)
-
   end
 
-  @@modes : Array(Mode) = Array(Mode).new
-
   # Get the major mode for the command. These correspond to a Mode object.
-  def get_mode : Mode?
-    # see if any args indicate a mode
-    @@modes.find do |mode|
-      # get the first char of each arg that starts with dash
-      @dash_args.map { |arg| arg[1] }.includes? mode.name
-    end
+  def get_operation : Operation?
   end
 
   # Get any operations that apply to the current mode
   #
   # Need to look for any args that start with dash, then remove all chars that
   # are the mode's name.
-  def get_operations_for_mode(mode : Mode)
-    all_mode_ops = mode.operations
-    # select the ops in the mode that are present in any dash arg
-    all_mode_ops.select do |op|
-      @dash_args.any? do |arg|
-        arg.chars.includes? op.name
-      end
-    end
+  def get_operations_for_mode
   end
 
   def get_arguments
