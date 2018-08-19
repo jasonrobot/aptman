@@ -41,4 +41,15 @@ describe "Parser" do
       parser.get_targets.should eq %w(c d)
     end
   end
+
+  describe "#explode_args" do
+    it "should return a flat array" do
+    end
+
+    it "should split up combined args" do
+    end
+
+    it "should include both args when one is repeated" do
+    end
+  end
 end

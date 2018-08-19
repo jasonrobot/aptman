@@ -30,6 +30,25 @@ class Parser
 
   end
 
+  # Make the array of command line args into an array of strings of args without dashes
+  def explode_args(args)
+    args.map do |arg|
+      # if single dash
+      if arg.starts_with? '-'
+        # return the parts
+        arg.shift.chars.map do |ch|
+          ch as String
+        end
+      else if arg.starts_with? "--"
+      # if double dash
+        # return the arg without leading double dashes
+        arg.shift.shift
+      else
+        # otherwise, this is a target arg, remove it
+      end
+    end.flatten
+  end
+
   # Get the major mode for the command. These correspond to a Mode object.
   def get_operation : Operation?
   end
@@ -41,6 +60,7 @@ class Parser
   def get_operations_for_mode
   end
 
+  # Get all non-operation non-mode arguments for the
   def get_arguments
   end
 
