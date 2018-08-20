@@ -44,6 +44,8 @@ describe "Parser" do
 
   describe "#explode_args" do
     it "should return a flat array" do
+      parser = Parser.new %w(-s -abc -y)
+      typeof( parser.explode_args( %w(-s -abc -y) ) ).should eq( Array(String) )
     end
 
     it "should split up combined args" do
