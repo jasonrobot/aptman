@@ -4,11 +4,10 @@ require "./argument.cr"
 
 class Operation
 
-  property name : Char,
-           args : Array(Argument)
+  property name : String
 
 
-  def initialize
+  def initialize(@name : String, @desc : String)
   end
 
   def is_valid_arg(arg : Argument)

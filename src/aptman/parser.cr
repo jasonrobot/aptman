@@ -39,10 +39,10 @@ class Parser
         arg.shift.chars.map do |ch|
           ch as String
         end
-      else if arg.starts_with? "--"
+      elsif arg.starts_with? "--"
       # if double dash
         # return the arg without leading double dashes
-        arg.shift.shift
+        arg
       else
         # otherwise, this is a target arg, remove it
       end
