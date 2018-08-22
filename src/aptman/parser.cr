@@ -31,20 +31,19 @@ class Parser
   end
 
   # Make the array of command line args into an array of strings of args without dashes
-  def explode_args(args)
+  def explode_args(args : Array(String))
     args.map do |arg|
       # if single dash
-      if arg.starts_with? '-'
+      if arg =~ /^-[^-]/
         # return the parts
-        arg.shift.chars.map do |ch|
-          ch as String
-        end
-      elsif arg.starts_with? "--"
-      # if double dash
+        arg[1, arg.size]
+      elsif arg =~ /^--[^-]/
+        # if double dash
         # return the arg without leading double dashes
-        arg
+        arg[2, arg.size]
       else
         # otherwise, this is a target arg, remove it
+        ""
       end
     end.flatten
   end
