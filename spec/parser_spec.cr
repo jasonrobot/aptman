@@ -1,10 +1,10 @@
 require "./spec_helper.cr"
 
 describe "Parser" do
-  describe "#get_arguments" do
-    parser = Parser.new %w(-a --arg-b -c -D)
-    parser.get_arguments.should eq %w(a arg-b c D)
-  end
+  # describe "#get_arguments" do
+  #   parser = Parser.new %w(-a --arg-b -c -D)
+  #   parser.get_arguments.should eq %w(a arg-b c D)
+  # end
 
   describe "#get_targets" do
     it "should not return args with a leading dash" do
