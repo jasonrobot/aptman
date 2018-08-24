@@ -31,8 +31,8 @@ class Parser
   end
 
   # Make the array of command line args into an array of strings of args without dashes
-  def explode_args(args : Array(String))
-    args.map do |arg|
+  def explode_args()
+    @args.map do |arg|
       # if single dash
       if arg =~ /^-[^-]/
         # return the parts
@@ -61,6 +61,7 @@ class Parser
 
   # Get all non-operation non-mode arguments for the
   def get_arguments
+
   end
 
   # Get the target names/patterns/files for the command

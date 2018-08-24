@@ -16,13 +16,17 @@ describe "Parser" do
   describe "#explode_args" do
     it "should return a flat array" do
       parser = Parser.new %w(-s -abc -y)
-      typeof( parser.explode_args( %w(-s -abc -y) ) ).should eq( Array(String) )
+      typeof( parser.explode_args).should eq( Array(String) )
     end
 
     it "should split up combined args" do
+      parser = Parser.new %w(-abcdef)
+      parser.explode_args.should eq( %w(a b c d e f) )
     end
 
     it "should include both args when one is repeated" do
+      parser = Parser.new %w(-aaa)
+      parser.explode_args.should eq( %w(a a a) )
     end
   end
 end
