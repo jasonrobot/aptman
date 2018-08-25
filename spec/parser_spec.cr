@@ -14,11 +14,6 @@ describe "Parser" do
   end
 
   describe "#explode_args" do
-    it "should return a flat array" do
-      parser = Parser.new %w(-s -abc -y)
-      typeof( parser.explode_args).should eq( Array(String) )
-    end
-
     it "should split up combined args" do
       parser = Parser.new %w(-abcdef)
       parser.explode_args.should eq( %w(a b c d e f) )
@@ -28,5 +23,17 @@ describe "Parser" do
       parser = Parser.new %w(-aaa)
       parser.explode_args.should eq( %w(a a a) )
     end
+
+    it "should return the full word of double dash args" do
+      parser = Parser.new %w(--foo-bar)
+      parser.explode_args.should eq( %w(foo-bar) )
+    end
+
+    it "should not return target args" do
+      parser = Parser.new %w(-a b)
+      parser.explode_args.should eq( %w(a) )
+    end
+
   end
+
 end

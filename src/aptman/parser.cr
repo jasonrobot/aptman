@@ -31,12 +31,12 @@ class Parser
   end
 
   # Make the array of command line args into an array of strings of args without dashes
-  def explode_args()
+  def explode_args() : Array(String)
     @args.map do |arg|
       # if single dash
       if arg =~ /^-[^-]/
         # return the parts
-        arg[1, arg.size]
+        arg[1, arg.size].chars.map &.to_s
       elsif arg =~ /^--[^-]/
         # if double dash
         # return the arg without leading double dashes
@@ -45,7 +45,7 @@ class Parser
         # otherwise, this is a target arg, remove it
         ""
       end
-    end.flatten
+    end.flatten.reject { |arg| arg == "" }
   end
 
   # Get the major mode for the command. These correspond to a Mode object.
