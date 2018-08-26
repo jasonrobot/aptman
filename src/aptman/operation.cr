@@ -1,16 +1,26 @@
 # Operations - Represents an operation available to aptman
 
-require "./argument.cr"
+require "./action.cr"
 
+
+# Operation represents operations that can be done by the command
+#
+# An operation is composed of actions, which represent actual work done by the program.
+#
 class Operation
 
   property name : String
 
-
   def initialize(@name : String, @desc : String)
+    @actions = Array(Action)
   end
 
-  def is_valid_arg(arg : Argument)
+  def add_action(action : Action)
+    @actions << action
+  end
+
+  def is_action(arg : Argument)
+    @actions.any? { |action| action.short_arg == arg || action.long_arg == arg }
   end
 
   def run

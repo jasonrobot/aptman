@@ -7,26 +7,19 @@ require "./argument.cr"
 # This is mean to emulate how pacman works on Arch Linux
 class Parser
 
-  @dash_args : Array(String)
+  # @dash_args : Array(String)
 
   def initialize(@args : Array(String))
-    @dash_args = @args.select { |arg| arg.starts_with? '-' }
 
-    sync_ops = [
-      Operation.new("s", "search"),
-      Operation.new("y", "update"),
-      Operation.new("yy", "force update"),
-      Operation.new("u", "upgrade")
-    ]
-
-    remove_ops = [
-      Operation.new("s", "and remove deps")
-    ]
-
-    query_ops = [
-      Operation.new("l", "list files"),
-      Operation.new("o", "owns <file>")
-    ]
+    # This is stupid:
+    # @args_present = Hash(String, Int32).new
+    # explode_args.each do |arg|
+    #   if @args_present.has_key? arg
+    #     @args_present[arg] = @args_present[arg] + 1
+    #   else
+    #     @args_present[arg] = 1
+    #   end
+    # end
 
   end
 
@@ -43,25 +36,12 @@ class Parser
         arg[2, arg.size]
       else
         # otherwise, this is a target arg, remove it
-        ""
       end
-    end.flatten.reject { |arg| arg == "" }
+    end.flatten.compact
   end
 
-  # Get the major mode for the command. These correspond to a Mode object.
-  def get_operation : Operation?
-  end
-
-  # Get any operations that apply to the current mode
-  #
-  # Need to look for any args that start with dash, then remove all chars that
-  # are the mode's name.
-  def get_operations_for_mode
-  end
-
-  # Get all non-operation non-mode arguments for the
-  def get_arguments
-
+  # Get the major mode for the command.
+  def get_operation
   end
 
   # Get the target names/patterns/files for the command
