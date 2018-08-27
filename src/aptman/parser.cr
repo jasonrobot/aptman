@@ -23,6 +23,14 @@ class Parser
 
   end
 
+  def add_operation(op : Operation)
+    @operations << op
+  end
+
+  # Get the major mode for the command.
+  def get_operation
+  end
+
   # Make the array of command line args into an array of strings of args without dashes
   def explode_args() : Array(String)
     @args.map do |arg|
@@ -38,10 +46,6 @@ class Parser
         # otherwise, this is a target arg, remove it
       end
     end.flatten.compact
-  end
-
-  # Get the major mode for the command.
-  def get_operation
   end
 
   # Get the target names/patterns/files for the command
