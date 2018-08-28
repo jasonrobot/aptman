@@ -1,7 +1,6 @@
 # My very own options parser to emulate pacman
 
 require "./operation.cr"
-require "./argument.cr"
 
 # Parser for command line args to aptman
 # This is mean to emulate how pacman works on Arch Linux
