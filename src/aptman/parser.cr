@@ -6,8 +6,6 @@ require "./operation.cr"
 # This is mean to emulate how pacman works on Arch Linux
 class Parser
 
-  # @dash_args : Array(String)
-
   def initialize(@args : Array(String))
 
     # This is stupid:
@@ -24,10 +22,6 @@ class Parser
 
   def add_operation(op : Operation)
     @operations << op
-  end
-
-  # Get the major mode for the command.
-  def get_operation
   end
 
   # Make the array of command line args into an array of strings of args without dashes
