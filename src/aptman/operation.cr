@@ -24,7 +24,4 @@ class Operation
     @actions.any? { |action| action.short_arg == arg || action.long_arg == arg }
   end
 
-  def run
-  end
-
 end
