@@ -6,17 +6,9 @@ require "./operation.cr"
 # This is mean to emulate how pacman works on Arch Linux
 class Parser
 
-  def initialize(@args : Array(String))
+  param banner : String
 
-    # This is stupid:
-    # @args_present = Hash(String, Int32).new
-    # explode_args.each do |arg|
-    #   if @args_present.has_key? arg
-    #     @args_present[arg] = @args_present[arg] + 1
-    #   else
-    #     @args_present[arg] = 1
-    #   end
-    # end
+  def initialize(@args : Array(String))
 
   end
 
